@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Orders | Vision Web Tech</title>
+  <meta name="description" content="Vision Web Tech customer dashboard for order tracking, status updates and delivery links.">
+  <meta name="robots" content="noindex,nofollow">
+  <!-- Replace canonical domain with final custom domain before deployment -->
+  <link rel="canonical" href="https://example.com/customer-dashboard.html">
+  <meta name="theme-color" content="#07111f">
+  <link rel="icon" href="assets/images/vision-web-tech-logo.png" type="image/png">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="site-shell admin-shell">
+    <header class="site-header">
+      <nav class="navbar container" aria-label="Customer dashboard navigation">
+        <a class="brand" href="index.html" aria-label="Vision Web Tech home">
+          <img src="assets/images/vision-web-tech-logo.png" alt="Vision Web Tech logo" class="brand-logo">
+          <span class="brand-fallback">Vision Web Tech</span>
+        </a>
+        <div class="admin-top-links">
+          <a class="btn btn-secondary slim-btn" href="pricing.html">Browse Plans</a>
+          <button class="btn btn-primary slim-btn" type="button" data-customer-logout>Logout</button>
+        </div>
+      </nav>
+    </header>
+
+    <main class="dashboard-page">
+      <section class="dashboard-section">
+        <div class="container">
+          <div class="dashboard-gate" data-customer-loading>
+            <div class="auth-card centered-card">
+              <span class="card-badge">Checking Access</span>
+              <h1>Loading your customer dashboard...</h1>
+              <p>Please wait while Vision Web Tech verifies your session.</p>
+            </div>
+          </div>
+
+          <div class="hidden" data-customer-dashboard>
+            <div class="dashboard-header reveal in-view">
+              <div>
+                <span class="eyebrow">Customer Portal</span>
+                <h1 data-customer-name>Vision Web Tech Customer</h1>
+                <p>Signed in as <strong data-customer-email>Checking...</strong></p>
+              </div>
+              <div class="dashboard-actions">
+                <a class="btn btn-secondary slim-btn" href="order.html">Place Another Order</a>
+                <button class="btn btn-primary slim-btn" type="button" data-customer-logout>Logout</button>
+              </div>
+            </div>
+
+            <section class="dashboard-grid overview-grid-admin reveal in-view">
+              <article class="dashboard-stat-card"><span>Total Orders</span><strong data-customer-order-count>0</strong></article>
+              <article class="dashboard-stat-card"><span>Active Orders</span><strong data-customer-active-count>0</strong></article>
+              <article class="dashboard-stat-card"><span>Completed</span><strong data-customer-completed-count>0</strong></article>
+            </section>
+
+            <section class="dashboard-grid main-dashboard-grid reveal in-view delay-1">
+              <article class="dashboard-card">
+                <span class="eyebrow">Profile</span>
+                <h2>Customer account</h2>
+                <div class="order-meta-grid compact-admin-grid">
+                  <div><span>Name</span><strong data-profile-name>—</strong></div>
+                  <div><span>Email</span><strong data-profile-email>—</strong></div>
+                  <div><span>Account ID</span><strong data-profile-uid>—</strong></div>
+                </div>
+                <p class="helper-text">This portal only shows orders linked to your authenticated account.</p>
+              </article>
+
+              <article class="dashboard-card dashboard-card-wide">
+                <span class="eyebrow">My Orders</span>
+                <h2>Track your website project</h2>
+                <p class="helper-text">Open an order card to see delivery status, expected delivery, customer-visible updates and the completed website URL.</p>
+                <div class="form-status info" data-customer-status>Loading your latest website orders...</div>
+                <div class="hidden empty-dashboard-state" data-customer-empty>
+                  <h3>No orders yet</h3>
+                  <p>You have not submitted a website order yet. Choose a package and start your project.</p>
+                  <a class="btn btn-primary slim-btn" href="pricing.html">Browse Plans</a>
+                </div>
+                <div class="customer-order-list" data-customer-orders></div>
+              </article>
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script type="module" src="assets/js/customer-dashboard.js"></script>
+</body>
+</html>

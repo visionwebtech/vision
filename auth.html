@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Login | Vision Web Tech</title>
+  <meta name="description" content="Create a Vision Web Tech customer account, log in, place website orders and track delivery updates.">
+  <meta name="robots" content="noindex,nofollow">
+  <!-- Replace canonical domain with final custom domain before deployment -->
+  <link rel="canonical" href="https://example.com/auth.html">
+  <meta name="theme-color" content="#07111f">
+  <link rel="icon" href="assets/images/vision-web-tech-logo.png" type="image/png">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header">
+      <nav class="navbar container" aria-label="Customer access navigation">
+        <a class="brand" href="index.html" aria-label="Vision Web Tech home">
+          <img src="assets/images/vision-web-tech-logo.png" alt="Vision Web Tech logo" class="brand-logo">
+          <span class="brand-fallback">Vision Web Tech</span>
+        </a>
+        <div class="admin-top-links">
+          <a class="btn btn-secondary slim-btn" href="pricing.html">View Pricing</a>
+          <a class="btn btn-primary slim-btn" href="contact.html">Need Consultation</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="auth-page">
+      <div class="container auth-grid">
+        <section class="auth-copy reveal in-view">
+          <span class="eyebrow">Customer Portal</span>
+          <h1 data-current-mode-label>Sign in to continue</h1>
+          <p>Create your customer account, place a website order without WhatsApp redirection, and track delivery updates directly from your dashboard.</p>
+          <ul class="check-list">
+            <li>Secure Supabase email and password authentication</li>
+            <li>Protected customer dashboard with your own orders only</li>
+            <li>Real website order submission saved directly to Supabase</li>
+            <li>Delivery URL visibility when the project is completed</li>
+          </ul>
+        </section>
+
+        <section class="auth-card reveal in-view delay-1">
+          <div class="toggle-row auth-toggle-row">
+            <button class="toggle-chip active-toggle" type="button" data-auth-tab="login">Login</button>
+            <button class="toggle-chip" type="button" data-auth-tab="signup">Sign Up</button>
+          </div>
+
+          <div class="form-status info" data-auth-global-status>Use your customer account to continue. Admin email automatically routes to the admin dashboard.</div>
+
+          <div data-auth-panel="login">
+            <form data-login-form>
+              <div class="form-field">
+                <label for="customerLoginEmail">Email</label>
+                <input id="customerLoginEmail" name="email" type="email" placeholder="you@example.com" required>
+              </div>
+              <div class="form-field">
+                <label for="customerLoginPassword">Password</label>
+                <input id="customerLoginPassword" name="password" type="password" placeholder="Your password" required>
+              </div>
+              <button class="btn btn-primary full-width" type="submit">Login</button>
+            </form>
+          </div>
+
+          <div class="hidden" data-auth-panel="signup">
+            <form data-signup-form>
+              <div class="form-field">
+                <label for="customerSignupName">Full Name</label>
+                <input id="customerSignupName" name="fullName" type="text" placeholder="Your full name" required>
+              </div>
+              <div class="form-field">
+                <label for="customerSignupEmail">Email</label>
+                <input id="customerSignupEmail" name="email" type="email" placeholder="you@example.com" required>
+              </div>
+              <div class="form-field">
+                <label for="customerSignupPassword">Password</label>
+                <input id="customerSignupPassword" name="password" type="password" placeholder="Create a password" minlength="6" required>
+              </div>
+              <button class="btn btn-primary full-width" type="submit">Create Account</button>
+            </form>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script type="module" src="assets/js/auth.js"></script>
+</body>
+</html>

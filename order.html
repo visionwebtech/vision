@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Order | Vision Web Tech</title>
+  <meta name="description" content="Submit your Vision Web Tech website order directly to Supabase and track its progress from your customer dashboard.">
+  <meta name="robots" content="noindex,nofollow">
+  <!-- Replace canonical domain with final custom domain before deployment -->
+  <link rel="canonical" href="https://example.com/order.html">
+  <meta name="theme-color" content="#07111f">
+  <link rel="icon" href="assets/images/vision-web-tech-logo.png" type="image/png">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header">
+      <nav class="navbar container" aria-label="Website order navigation">
+        <a class="brand" href="index.html" aria-label="Vision Web Tech home">
+          <img src="assets/images/vision-web-tech-logo.png" alt="Vision Web Tech logo" class="brand-logo">
+          <span class="brand-fallback">Vision Web Tech</span>
+        </a>
+        <div class="admin-top-links">
+          <a class="btn btn-secondary slim-btn" href="pricing.html">Back to Pricing</a>
+          <a class="btn btn-primary slim-btn" href="customer-dashboard.html">My Orders</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="container page-hero-layout">
+          <div class="page-hero-panel reveal in-view">
+            <span class="eyebrow">Website Order</span>
+            <h1 data-order-package-heading>Business Package Order</h1>
+            <p data-order-package-summary>A stronger package for businesses that need better presentation and more structure.</p>
+            <div class="highlight-row">
+              <span class="tech-pill">Secure Customer Authentication</span>
+              <span class="tech-pill">Direct Supabase Order Saving</span>
+              <span class="tech-pill">Customer Status Tracking</span>
+            </div>
+          </div>
+          <aside class="intro-card reveal in-view delay-1">
+            <span class="card-badge">Order Flow</span>
+            <h2>What happens after submission?</h2>
+            <ul class="check-list">
+              <li>Your order is saved directly to Supabase</li>
+              <li>The admin reviews scope and updates status</li>
+              <li>You can track progress from My Orders</li>
+              <li>Completed websites include a delivery URL</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <section class="page-section">
+        <div class="container split-layout order-section-layout">
+          <div class="form-card reveal in-view">
+            <span class="eyebrow">Project Details</span>
+            <h2>Submit your website order</h2>
+            <p class="form-hint">You must be logged in to place an order. If your Supabase project requires email confirmation, confirm your email before submitting.</p>
+            <form data-customer-order-form>
+              <div class="form-row">
+                <div class="form-field"><label for="websiteOrderName">Full Name</label><input id="websiteOrderName" name="fullName" type="text" placeholder="Your full name" required></div>
+                <div class="form-field"><label for="websiteOrderEmail">Email</label><input id="websiteOrderEmail" name="email" type="email" placeholder="you@example.com" required></div>
+              </div>
+              <div class="form-row">
+                <div class="form-field"><label for="websiteOrderPhone">WhatsApp / Phone</label><input id="websiteOrderPhone" name="phone" type="tel" placeholder="Your contact number" required></div>
+                <div class="form-field"><label for="websiteOrderBusiness">Business Name</label><input id="websiteOrderBusiness" name="businessName" type="text" placeholder="Your business name" required></div>
+              </div>
+              <div class="form-row">
+                <div class="form-field"><label for="websiteOrderService">Service</label><input id="websiteOrderService" name="service" type="text" placeholder="Business Website Development" required></div>
+                <div class="form-field"><label for="websiteOrderPackage">Package</label><select id="websiteOrderPackage" name="package" required><option value="Starter">Starter</option><option value="Business">Business</option><option value="Premium">Premium</option><option value="Custom Discussion">Custom Discussion</option></select></div>
+              </div>
+              <div class="form-field"><label for="websiteOrderRequirements">Requirements / Project Description</label><textarea id="websiteOrderRequirements" name="requirements" placeholder="Tell Vision Web Tech about your business, pages, style direction and project goals." required></textarea></div>
+              <div class="form-status info" data-order-form-status>Your order will be saved directly to Supabase and will not redirect to WhatsApp.</div>
+              <button class="btn btn-primary" type="submit">Submit Website Order</button>
+            </form>
+          </div>
+          <aside class="overview-card reveal in-view delay-1">
+            <span class="card-badge">Need Consultation First?</span>
+            <h3>Consultation still stays available.</h3>
+            <p>If you want to discuss package fit or scope before ordering, WhatsApp consultation remains active.</p>
+            <div class="cta-row compact-actions">
+              <a class="btn btn-secondary" data-link-type="whatsapp" data-whatsapp-message="Hi Vision Web Tech, I want to discuss my website requirements before placing an order." href="https://wa.me/919546723997" target="_blank" rel="noopener">Discuss on WhatsApp</a>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script type="module" src="assets/js/order-page.js"></script>
+  <script type="module" src="assets/js/site-data.js"></script>
+</body>
+</html>

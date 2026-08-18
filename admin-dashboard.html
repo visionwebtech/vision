@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Vision Web Tech</title>
+  <meta name="description" content="Private admin dashboard for Vision Web Tech orders, pricing, services, portfolio and contact settings.">
+  <meta name="robots" content="noindex,nofollow">
+  <!-- Replace canonical domain with final custom domain before deployment -->
+  <link rel="canonical" href="https://example.com/admin-dashboard.html">
+  <meta name="theme-color" content="#07111f">
+  <link rel="icon" href="assets/images/vision-web-tech-logo.png" type="image/png">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="site-shell admin-shell">
+    <header class="site-header">
+      <nav class="navbar container" aria-label="Admin dashboard navigation">
+        <a class="brand" href="index.html" aria-label="Vision Web Tech home">
+          <img src="assets/images/vision-web-tech-logo.png" alt="Vision Web Tech logo" class="brand-logo">
+          <span class="brand-fallback">Vision Web Tech</span>
+        </a>
+        <div class="admin-top-links">
+          <a class="btn btn-secondary slim-btn" href="index.html">View Website</a>
+          <button class="btn btn-primary slim-btn" type="button" data-dashboard-logout>Logout</button>
+        </div>
+      </nav>
+    </header>
+
+    <main class="dashboard-page">
+      <section class="dashboard-section">
+        <div class="container">
+          <div class="dashboard-gate" data-dashboard-loading>
+            <div class="auth-card centered-card">
+              <span class="card-badge">Checking Access</span>
+              <h1>Loading admin dashboard...</h1>
+              <p>Please wait while Vision Web Tech verifies your admin session.</p>
+            </div>
+          </div>
+
+          <div class="hidden" data-dashboard-app>
+            <div class="dashboard-header reveal in-view">
+              <div>
+                <span class="eyebrow">Private Dashboard</span>
+                <h1>Vision Web Tech Admin Dashboard</h1>
+                <p>Authorized account: <strong data-admin-email>Checking...</strong></p>
+              </div>
+              <div class="dashboard-actions">
+                <button class="btn btn-secondary slim-btn" type="button" data-refresh-dashboard>Refresh Data</button>
+                <button class="btn btn-primary slim-btn" type="button" data-dashboard-logout>Logout</button>
+              </div>
+            </div>
+
+            <section class="dashboard-grid overview-grid-admin reveal in-view">
+              <article class="dashboard-stat-card"><span>Total Orders</span><strong data-total-orders>0</strong></article>
+              <article class="dashboard-stat-card"><span>Pending Review</span><strong data-pending-orders>0</strong></article>
+              <article class="dashboard-stat-card"><span>Accepted</span><strong data-accepted-orders>0</strong></article>
+              <article class="dashboard-stat-card"><span>In Progress</span><strong data-progress-orders>0</strong></article>
+              <article class="dashboard-stat-card"><span>Need Information</span><strong data-needinfo-orders>0</strong></article>
+              <article class="dashboard-stat-card"><span>Completed</span><strong data-completed-orders>0</strong></article>
+              <article class="dashboard-stat-card"><span>Cancelled</span><strong data-cancelled-orders>0</strong></article>
+            </section>
+
+            <section class="dashboard-grid dashboard-stack reveal in-view delay-1">
+              <article class="dashboard-card dashboard-card-wide">
+                <div class="comparison-head stacked-head">
+                  <div>
+                    <span class="eyebrow">Orders</span>
+                    <h2>Manage website orders</h2>
+                  </div>
+                  <div class="filter-row">
+                    <input type="search" data-order-search placeholder="Search by customer, business, service or requirement">
+                    <select data-order-filter>
+                      <option value="all">All statuses</option>
+                      <option value="Pending Review">Pending Review</option>
+                      <option value="Accepted">Accepted</option>
+                      <option value="In Progress">In Progress</option>
+                      <option value="Need Information">Need Information</option>
+                      <option value="Completed">Completed</option>
+                      <option value="Cancelled">Cancelled</option>
+                    </select>
+                  </div>
+                </div>
+                <p class="helper-text">Update status, add expected delivery, paste the completed website URL and leave the customer-visible note without touching code.</p>
+                <div class="form-status info" data-orders-message role="status" aria-live="polite">Waiting to load orders...</div>
+                <div class="admin-order-list" data-orders-list></div>
+              </article>
+
+              <article class="dashboard-card">
+                <span class="eyebrow">Customers</span>
+                <h2>Customer summaries</h2>
+                <p class="helper-text">Grouped by order owner for quick follow-up.</p>
+                <div class="manager-grid two-column" data-customers-grid></div>
+              </article>
+
+              <article class="dashboard-card dashboard-card-wide">
+                <div class="comparison-head">
+                  <div>
+                    <span class="eyebrow">Pricing</span>
+                    <h2>Simple pricing management</h2>
+                  </div>
+                </div>
+                <p class="helper-text">Update package names, prices, delivery time, descriptions, features and featured state without editing HTML.</p>
+                <div class="manager-grid" data-pricing-manager></div>
+              </article>
+
+              <article class="dashboard-card dashboard-card-wide">
+                <div class="comparison-head">
+                  <div>
+                    <span class="eyebrow">Services</span>
+                    <h2>Service content management</h2>
+                  </div>
+                </div>
+                <p class="helper-text">Maintain public service names and descriptions from here.</p>
+                <div class="manager-grid" data-services-manager></div>
+              </article>
+
+              <article class="dashboard-card dashboard-card-wide">
+                <div class="comparison-head">
+                  <div>
+                    <span class="eyebrow">Portfolio</span>
+                    <h2>Website project showcase</h2>
+                  </div>
+                </div>
+                <p class="helper-text">Add future portfolio projects with category, URL and image path while preserving the public design.</p>
+                <div class="manager-grid" data-portfolio-manager></div>
+              </article>
+
+              <article class="dashboard-card dashboard-card-wide">
+                <span class="eyebrow">Contact / Site Settings</span>
+                <h2>Public business information</h2>
+                <p class="helper-text">Update phone, WhatsApp number, email, Instagram and CTA text for the settings-driven public pages.</p>
+                <form class="manager-form" data-site-settings-form>
+                  <div class="form-row">
+                    <div class="form-field"><label>Business Phone</label><input type="text" name="business_phone" required></div>
+                    <div class="form-field"><label>WhatsApp Number</label><input type="text" name="whatsapp_number" required></div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-field"><label>Business Email</label><input type="email" name="business_email" required></div>
+                    <div class="form-field"><label>Instagram URL</label><input type="url" name="instagram_url" required></div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-field"><label>Instagram Handle</label><input type="text" name="instagram_handle" required></div>
+                    <div class="form-field"><label>Primary CTA Text</label><input type="text" name="primary_cta_text" required></div>
+                  </div>
+                  <div class="form-field"><label>Contact Heading</label><input type="text" name="contact_heading" required></div>
+                  <div class="form-field"><label>Contact Intro</label><textarea name="contact_intro" required></textarea></div>
+                  <div class="form-status info" data-site-settings-message>Ready to save site settings.</div>
+                  <button class="btn btn-primary slim-btn" type="submit">Save Settings</button>
+                </form>
+              </article>
+
+              <article class="dashboard-card">
+                <span class="eyebrow">Admin Account</span>
+                <h2>Session controls</h2>
+                <p>Only the authorized Vision Web Tech admin account can access this dashboard.</p>
+                <button class="btn btn-secondary" type="button" data-dashboard-logout>Logout</button>
+              </article>
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script type="module" src="assets/js/admin-dashboard.js"></script>
+</body>
+</html>

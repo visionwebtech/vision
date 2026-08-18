@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login | Vision Web Tech</title>
+  <meta name="description" content="Secure admin login for Vision Web Tech website management.">
+  <meta name="robots" content="noindex,nofollow">
+  <!-- Replace canonical domain with final custom domain before deployment -->
+  <link rel="canonical" href="https://example.com/admin-login.html">
+  <meta name="theme-color" content="#07111f">
+  <link rel="icon" href="assets/images/vision-web-tech-logo.png" type="image/png">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="site-shell admin-shell">
+    <header class="site-header">
+      <nav class="navbar container" aria-label="Admin navigation">
+        <a class="brand" href="index.html" aria-label="Vision Web Tech home">
+          <img src="assets/images/vision-web-tech-logo.png" alt="Vision Web Tech logo" class="brand-logo">
+          <span class="brand-fallback">Vision Web Tech</span>
+        </a>
+        <div class="admin-top-links">
+          <a class="btn btn-secondary slim-btn" href="index.html">Back to Website</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="auth-page">
+      <section class="auth-section">
+        <div class="container auth-grid">
+          <div class="auth-copy reveal in-view">
+            <span class="eyebrow">Secure Access</span>
+            <h1>Vision Web Tech Admin Login</h1>
+            <p>Sign in with the authorized admin account to access the private dashboard, review website orders and manage the current website foundation.</p>
+            <ul class="check-list">
+              <li>Supabase authentication session support</li>
+              <li>Authorized admin email verification</li>
+              <li>Responsive dashboard foundation</li>
+            </ul>
+          </div>
+          <div class="auth-card reveal in-view delay-1">
+            <span class="card-badge">Admin Access</span>
+            <h2>Sign in</h2>
+            <form data-admin-login-form>
+              <div class="form-field">
+                <label for="adminEmail">Email</label>
+                <input id="adminEmail" name="email" type="email" placeholder="VISIONWEBTECH.INFO@GMAIL.COM" required>
+              </div>
+              <div class="form-field">
+                <label for="adminPassword">Password</label>
+                <input id="adminPassword" name="password" type="password" placeholder="Your admin password" required>
+              </div>
+              <div class="form-status info" data-auth-status role="status" aria-live="polite">Use the authorized Vision Web Tech admin email and your Supabase Auth password.</div>
+              <button class="btn btn-primary" type="submit">Login</button>
+            </form>
+            <div class="signed-in-box hidden" data-signed-in-box>
+              <p class="helper-text">Signed in account: <strong data-signed-in-email></strong></p>
+              <button class="btn btn-secondary" type="button" data-admin-logout>Logout</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script type="module" src="assets/js/admin-login.js"></script>
+</body>
+</html>

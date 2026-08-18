@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Vision Web Tech | Let’s Build Your Website</title>
+  <meta name="description" content="Contact Vision Web Tech by phone, WhatsApp or Instagram. Use the enquiry form for consultation or create an account to place an actual website order.">
+  <meta name="robots" content="index,follow">
+  <!-- Replace canonical domain with final custom domain before deployment -->
+  <link rel="canonical" href="https://example.com/contact.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Contact Vision Web Tech">
+  <meta property="og:description" content="Call, WhatsApp or message Vision Web Tech to discuss your business website.">
+  <meta property="og:url" content="https://example.com/contact.html">
+  <meta property="og:image" content="assets/images/vision-web-tech-logo.png">
+  <meta name="theme-color" content="#07111f">
+  <link rel="icon" href="assets/images/vision-web-tech-logo.png" type="image/png">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header">
+      <nav class="navbar container" aria-label="Primary navigation">
+        <a class="brand" href="index.html" aria-label="Vision Web Tech home">
+          <img src="assets/images/vision-web-tech-logo.png" alt="Vision Web Tech logo" class="brand-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex';">
+          <span class="brand-fallback">Vision Web Tech</span>
+        </a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="site-menu" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <div class="nav-panel" id="site-menu">
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="partnership.html">Partnership</a></li>
+            <li><a class="active" href="contact.html">Contact</a></li>
+          </ul>
+          <a class="btn btn-primary nav-cta" data-link-type="whatsapp" href="https://wa.me/919546723997" target="_blank" rel="noopener" data-primary-cta-text>Get Free Consultation</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="container page-hero-layout">
+          <div class="page-hero-panel reveal">
+            <span class="eyebrow">Contact</span>
+            <h1 data-contact-heading>Let’s Build Your Website</h1>
+            <p data-contact-intro>Reach Vision Web Tech through your preferred channel and start the conversation about the right website for your business.</p>
+            <div class="quick-contact">
+              <a class="contact-chip" data-link-type="phone" data-link-type="phone" href="tel:+919546723997">Phone: <span data-contact-phone-text>+91 9546723997</span></a>
+              <a class="contact-chip" data-link-type="whatsapp" data-link-type="whatsapp" href="https://wa.me/919546723997" target="_blank" rel="noopener">WhatsApp: <span data-contact-phone-text>+91 9546723997</span></a>
+              <a class="contact-chip" data-link-type="instagram" data-link-type="instagram" href="https://www.instagram.com/visionwebtech/" target="_blank" rel="noopener">Instagram: <span data-contact-instagram-text>@visionwebtech</span></a>
+            </div>
+          </div>
+          <aside class="intro-card reveal delay-1">
+            <span class="card-badge">Fastest Response</span>
+            <h2>WhatsApp is still the strongest consultation path.</h2>
+            <p>Use the direct buttons or the enquiry form below. When you are ready to place the actual website order, use the secure customer portal instead of WhatsApp.</p>
+            <div class="cta-row compact-actions">
+              <a class="btn btn-secondary" href="auth.html">Customer Login</a>
+              <a class="btn btn-primary" href="order.html">Place Website Order</a>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="page-section">
+        <div class="container contact-grid">
+          <div>
+            <div class="section-heading reveal">
+              <span class="eyebrow">Connect</span>
+              <h2>Choose how you want to contact us.</h2>
+            </div>
+            <div class="contact-method-grid">
+              <article class="contact-method-card reveal">
+                <header><h3>Call Now</h3><span class="card-badge">Direct</span></header>
+                <p>Speak directly about your business website requirement.</p>
+                <a class="btn btn-secondary" data-link-type="phone" data-link-type="phone" href="tel:+919546723997">Call Now</a>
+              </article>
+              <article class="contact-method-card reveal delay-1">
+                <header><h3>WhatsApp</h3><span class="card-badge">Primary CTA</span></header>
+                <p>Start a fast conversation for pricing, scope and free consultation.</p>
+                <a class="btn btn-primary" data-link-type="whatsapp" data-link-type="whatsapp" href="https://wa.me/919546723997" target="_blank" rel="noopener">WhatsApp</a>
+              </article>
+              <article class="contact-method-card reveal delay-2">
+                <header><h3>Instagram</h3><span class="card-badge">Social</span></header>
+                <p>Follow and message Vision Web Tech on Instagram.</p>
+                <a class="btn btn-secondary" data-link-type="instagram" data-link-type="instagram" href="https://www.instagram.com/visionwebtech/" target="_blank" rel="noopener">Follow on Instagram</a>
+              </article>
+            </div>
+          </div>
+          <aside class="form-card reveal delay-1">
+            <span class="eyebrow">Front-End Enquiry Form</span>
+            <h2>Continue on WhatsApp</h2>
+            <p class="form-hint">This static form uses JavaScript to generate a WhatsApp message. No backend storage is used here because consultation is separate from the actual website order flow.</p>
+            <form data-whatsapp-form>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="name">Name</label>
+                  <input id="name" name="name" type="text" placeholder="Your name" required>
+                </div>
+                <div class="form-field">
+                  <label for="businessName">Business Name</label>
+                  <input id="businessName" name="businessName" type="text" placeholder="Your business name" required>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="phone">Phone</label>
+                  <input id="phone" name="phone" type="tel" placeholder="Your contact number" required>
+                </div>
+                <div class="form-field">
+                  <label for="businessType">Business Type</label>
+                  <input id="businessType" name="businessType" type="text" placeholder="Restaurant, clinic, consultant..." required>
+                </div>
+              </div>
+              <div class="form-field">
+                <label for="package">Preferred Package</label>
+                <select id="package" name="package" required>
+                  <option value="Starter">Starter</option>
+                  <option value="Business">Business</option>
+                  <option value="Premium">Premium</option>
+                  <option value="Custom">Custom Discussion</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label for="requirement">Website Requirement</label>
+                <textarea id="requirement" name="requirement" placeholder="Tell us about your website requirement" required></textarea>
+              </div>
+              <div class="notice-bar">Future backend integration could store consultation enquiries here. For now, the form simply opens WhatsApp with your details while actual orders go through the customer portal.</div>
+              <button class="btn btn-primary" type="submit">Continue on WhatsApp</button>
+            </form>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div><a class="brand footer-brand" href="index.html"><img src="assets/images/vision-web-tech-logo.png" alt="Vision Web Tech logo" class="brand-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex';"><span class="brand-fallback">Vision Web Tech</span></a><p>Modern websites built with thoughtful design, responsive development and a business-first approach.</p></div>
+        <div><h3>Quick Links</h3><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="partnership.html">Partnership</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div><h3>Connect</h3><ul><li><a data-link-type="instagram" data-link-type="instagram" href="https://www.instagram.com/visionwebtech/" target="_blank" rel="noopener">Instagram</a></li><li><a data-link-type="whatsapp" data-link-type="whatsapp" href="https://wa.me/919546723997" target="_blank" rel="noopener">WhatsApp</a></li><li><a data-link-type="phone" data-link-type="phone" href="tel:+919546723997">Call</a></li></ul></div>
+        <div><h3>Services</h3><ul><li>Website Development</li><li>Landing Pages</li><li>Responsive Web Design</li><li>Basic SEO</li><li>Business Websites</li><li>Technical Support</li></ul></div>
+      </div>
+      <div class="footer-bottom container footer-meta"><p>© 2026 Vision Web Tech. All rights reserved.</p><div class="footer-bottom-right"><a class="footer-admin-link" href="auth.html">Customer Portal</a><a class="footer-admin-link" href="admin-login.html">Admin Login</a><p>INNOVATE • BUILD • ELEVATE</p></div></div>
+    </footer>
+  </div>
+  <a class="floating-whatsapp" data-link-type="whatsapp" href="https://wa.me/919546723997" target="_blank" rel="noopener" aria-label="Chat with Vision Web Tech on WhatsApp"><span class="floating-icon">✆</span><span>Chat with us</span></a>
+  <script src="assets/js/main.js"></script>
+  <script type="module" src="assets/js/site-data.js"></script>
+</body>
+</html>
