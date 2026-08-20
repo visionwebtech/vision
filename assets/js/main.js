@@ -1,4 +1,4 @@
-const navToggle = document.querySelector('.nav-toggle');
+ const navToggle = document.querySelector('.nav-toggle');
 const header = document.querySelector('.site-header');
 const siteShell = document.querySelector('.site-shell');
 const navLinks = document.querySelectorAll('.nav-links a');
@@ -172,43 +172,7 @@ function initHeroCanvas() {
 }
 
 function initIntroOverlay() {
-  if (!document.body.classList.contains('home-page')) return;
-
-  const alreadySeen = sessionStorage.getItem('vwt-intro-seen') === '1';
-  const shouldShow = !alreadySeen && !prefersReducedMotion;
-  if (!shouldShow) {
-    html.classList.remove('intro-lock');
-    return;
-  }
-
-  html.classList.add('intro-lock');
-  const overlay = document.createElement('div');
-  overlay.className = 'site-intro-overlay';
-  overlay.innerHTML = `
-    <div class="site-intro-inner" role="presentation">
-      <div class="site-intro-logo-ring">
-        <img src="assets/images/vision-web-tech-logo.png" alt="Vision Web Tech logo" class="site-intro-logo">
-      </div>
-      <div class="site-intro-copy">
-        <span class="site-intro-kicker">WELCOME TO</span>
-        <h2>VISION WEB TECH</h2>
-      </div>
-    </div>
-  `;
-  document.body.appendChild(overlay);
-
-  const finishIntro = () => {
-    overlay.classList.add('intro-finished');
-    html.classList.remove('intro-lock');
-    sessionStorage.setItem('vwt-intro-seen', '1');
-    window.setTimeout(() => overlay.remove(), 650);
-  };
-
-  overlay.querySelector('img')?.addEventListener('error', finishIntro, { once: true });
-  window.setTimeout(finishIntro, 2100);
-  window.setTimeout(() => {
-    if (document.body.contains(overlay)) finishIntro();
-  }, 3200);
+  return;
 }
 
 initNavigation();
