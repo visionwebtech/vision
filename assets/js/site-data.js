@@ -1,28 +1,46 @@
-import { escapeHtml, mapSettingRows, normalizeFeatures, packageSlugToQuery, safeUrl, supabase } from './supabase-client.js';
-import { DEFAULT_PACKAGES, DEFAULT_PORTFOLIO, DEFAULT_SERVICES, DEFAULT_SETTINGS } from './default-content.js';
+ import { DEFAULT_PACKAGES, DEFAULT_PORTFOLIO, DEFAULT_SERVICES, DEFAULT_SETTINGS } from './default-content.js';
+
+function escapeHtml(value = '') {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function normalizeFeatures(value) {
+  if (Array.isArray(value)) return value;
+  if (typeof value === 'string') {
+    return value.split('\n').map((item) => item.trim()).filter(Boolean);
+  }
+  return [];
+}
+
+function packageSlugToQuery(value = '') {
+  return String(value).trim().toLowerCase().replace(/[^a-z0-9]+/g, '-');
+}
+
+function safeUrl(value = '') {
+  try {
+    if (!value) return '';
+    const url = new URL(value);
+    return url.toString();
+  } catch {
+    return '';
+  }
+}
+
+function mapSettingRows(rows = []) {
+  const settings = { ...DEFAULT_SETTINGS };
+  rows.forEach((row) => {
+    if (row?.setting_key) settings[row.setting_key] = row.setting_value;
+  });
+  return settings;
+}
 
 function sortRows(rows = []) {
   return [...rows].sort((a, b) => (a.sort_order ?? 999) - (b.sort_order ?? 999));
-}
-
-async function fetchVisibleRows(table, fallback, orderField = 'sort_order') {
-  try {
-    const { data, error } = await supabase.from(table).select('*').eq('is_visible', true).order(orderField, { ascending: true });
-    if (error || !Array.isArray(data) || !data.length) return fallback;
-    return data;
-  } catch {
-    return fallback;
-  }
-}
-
-async function fetchSettings() {
-  try {
-    const { data, error } = await supabase.from('site_settings').select('*');
-    if (error || !Array.isArray(data) || !data.length) return DEFAULT_SETTINGS;
-    return mapSettingRows(data);
-  } catch {
-    return DEFAULT_SETTINGS;
-  }
 }
 
 function renderPricingCards(container, packages, { compact = false } = {}) {
@@ -32,7 +50,11 @@ function renderPricingCards(container, packages, { compact = false } = {}) {
     const slug = packageSlugToQuery(pkg.slug || pkg.name);
     const cleanName = pkg.name.replace(' Website', '');
     const classes = ['pricing-card', 'reveal', pkg.is_featured ? 'featured' : '', slug === 'premium' ? 'premium' : ''].filter(Boolean).join(' ');
-    const badge = pkg.is_featured ? '<span class="top-badge">Most Popular</span>' : slug === 'premium' ? '<span class="top-badge alt">Best Value</span>' : '';
+    const badge = pkg.is_featured
+      ? '<span class="top-badge">Most Popular</span>'
+      : slug === 'premium'
+        ? '<span class="top-badge alt">Best Value</span>'
+        : '';
     const buttonClass = pkg.is_featured ? 'btn btn-primary full-width' : 'btn btn-secondary full-width';
     const extraMeta = pkg.delivery_time ? `<p class="pricing-meta-line">Delivery: ${escapeHtml(pkg.delivery_time)}</p>` : '';
     return `
@@ -54,28 +76,37 @@ function renderPricingCards(container, packages, { compact = false } = {}) {
 function renderHeroPills(container, packages) {
   if (!container) return;
   const visiblePackages = sortRows(packages).slice(0, 3);
-  container.innerHTML = visiblePackages.map((pkg) => `<span class="tech-pill">${escapeHtml(pkg.name.replace(' Website', ''))} — ${escapeHtml(pkg.price_text)}</span>`).join('');
+  container.innerHTML = visiblePackages
+    .map((pkg) => `<span class="tech-pill">${escapeHtml(pkg.name.replace(' Website', ''))} — ${escapeHtml(pkg.price_text)}</span>`)
+    .join('');
 }
 
 function renderServices(container, services) {
   if (!container) return;
-  container.innerHTML = sortRows(services).map((service, index) => `
+  container.innerHTML = sortRows(services)
+    .map(
+      (service, index) => `
     <article class="service-item reveal ${index % 3 === 1 ? 'delay-1' : index % 3 === 2 ? 'delay-2' : ''}">
       <h3>${escapeHtml(service.title)}</h3>
       <p>${escapeHtml(service.description)}</p>
     </article>
-  `).join('');
+  `
+    )
+    .join('');
 }
 
 function renderPortfolio(container, projects) {
   if (!container) return;
-  container.innerHTML = sortRows(projects).map((project, index) => {
-    const safeProjectUrl = safeUrl(project.website_url);
-    const visual = project.image_url
-      ? `<div class="concept-visual external-portfolio-image" style="background-image:url('${String(project.image_url).replace(/'/g, '%27')}');"></div>`
-      : `<div class="concept-visual ${(project.category || '').toLowerCase().replace(/[^a-z0-9]+/g, '-') || 'consultant-theme'}"><div class="concept-screen minimal"></div></div>`;
-    const link = safeProjectUrl ? `<a class="portfolio-link" href="${safeProjectUrl}" target="_blank" rel="noopener">Open Website</a>` : '<span class="portfolio-link muted">Preview only</span>';
-    return `
+  container.innerHTML = sortRows(projects)
+    .map((project, index) => {
+      const safeProjectUrl = safeUrl(project.website_url);
+      const visual = project.image_url
+        ? `<div class="concept-visual external-portfolio-image" style="background-image:url('${String(project.image_url).replace(/'/g, '%27')}');"></div>`
+        : `<div class="concept-visual ${(project.category || '').toLowerCase().replace(/[^a-z0-9]+/g, '-') || 'consultant-theme'}"><div class="concept-screen minimal"></div></div>`;
+      const link = safeProjectUrl
+        ? `<a class="portfolio-link" href="${safeProjectUrl}" target="_blank" rel="noopener">Open Website</a>`
+        : '<span class="portfolio-link muted">Preview only</span>';
+      return `
       <article class="concept-card reveal ${index % 3 === 1 ? 'delay-1' : index % 3 === 2 ? 'delay-2' : ''}">
         <span class="card-badge">${escapeHtml(project.category || 'Portfolio')}</span>
         ${visual}
@@ -84,7 +115,8 @@ function renderPortfolio(container, projects) {
         ${link}
       </article>
     `;
-  }).join('');
+    })
+    .join('');
 }
 
 function updateSettingDrivenContent(settings) {
@@ -130,13 +162,36 @@ function updateSettingDrivenContent(settings) {
   if (contactIntro) contactIntro.textContent = settings.contact_intro;
 }
 
-async function bootSiteData() {
-  const [packages, services, projects, settings] = await Promise.all([
-    fetchVisibleRows('pricing_packages', DEFAULT_PACKAGES),
-    fetchVisibleRows('services_content', DEFAULT_SERVICES),
-    fetchVisibleRows('portfolio_projects', DEFAULT_PORTFOLIO),
-    fetchSettings()
-  ]);
+/*
+ * Safety fallback: every .reveal element starts at opacity:0 in style.css and is
+ * revealed by IntersectionObserver in main.js. If JS stalls, or if the visitor
+ * is using a headless renderer / screenshot tool that does not scroll, those
+ * items would stay invisible forever. This timeout guarantees no element gets
+ * stuck hidden more than 1.2s after page load.
+ */
+(function revealFallback() {
+  setTimeout(() => {
+    document.querySelectorAll('.reveal:not(.in-view)').forEach((el) => el.classList.add('in-view'));
+  }, 1200);
+})();
+
+function bootSiteData() {
+  /*
+   * Render directly from DEFAULT_* exports of default-content.js.
+   * The original implementation imported the Supabase client from
+   *   https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm
+   * via ./supabase-client.js. If that CDN import failed, was slow, or the
+   * Supabase call rejected, the entire module chain stalled and the
+   * pricing/services/portfolio grids were left with only their static
+   * placeholder <article> -> the giant empty gap you saw on Pricing and
+   * Services pages. Rendering from defaults synchronously makes the page
+   * render reliably every time. Admin edits via Supabase (if any) can be
+   * wired in as a non-blocking enhancement later without breaking render.
+   */
+  const packages = DEFAULT_PACKAGES;
+  const services = DEFAULT_SERVICES;
+  const projects = DEFAULT_PORTFOLIO;
+  const settings = DEFAULT_SETTINGS;
 
   renderHeroPills(document.querySelector('[data-pricing-hero-pills]'), packages);
   renderPricingCards(document.querySelector('[data-pricing-grid]'), packages, { compact: false });
@@ -152,4 +207,8 @@ async function bootSiteData() {
   });
 }
 
-bootSiteData();
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', bootSiteData);
+} else {
+  bootSiteData();
+}
